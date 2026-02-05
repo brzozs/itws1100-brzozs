@@ -1,0 +1,14 @@
+PORTFOLIO WEBSITE - SITE MAP
+
+Home Page
+├── About
+│   └── Brief introduction about me and bio
+├── Projects/Portfolio
+│   └── Showcase of past work and projects
+├── Skills
+│   └── Technical and professional skills
+├── Experience/Resume
+│   └── Work history and education
+└── Contact
+    └── Contact information and form
+
