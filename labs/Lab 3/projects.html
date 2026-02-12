@@ -1,31 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects - Sebastian's Resume</title>
+  <title>Projects - Sebastian Brzozowski</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="index.html" class="nav-logo">SB</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="exp.html">Experience</a></li>
+        <li><a href="VolE.html">Volunteer</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<h2>Projects</h2>
-<a href="index.html"><h3>Home</h3></a>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Innovative solutions and creative implementations</p>
 
-<ul>
-    <li><strong>RPI Dorms Space</strong>
-        <ul>
-            <li>Interactive 3D web application for exploring RPI dorm rooms</li>
-        </ul>
-    </li>
-    
-    <li><strong>City Limits</strong>
-        <ul>
-            <li>Educational traffic simulation game teaching urban planning principles</li>
-            <li>Real-world traffic data integration for authentic city experiences</li>
-            <li>Spring 2026 RCOS project</li>
-        </ul>
-    </li>
-</ul>
+      <div class="grid grid-2">
+        <div class="project-card">
+          <h3>RPI Dorms Space</h3>
+          <div class="card-content">
+            <p>Interactive 3D web application for exploring RPI dorm rooms</p>
+            <ul>
+              <li>Provides immersive virtual tours of campus housing</li>
+              <li>Helps prospective students visualize dorm life</li>
+              <li>Built with modern web technologies</li>
+            </ul>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Web Development</span>
+            <span class="tag">3D</span>
+            <span class="tag">RPI</span>
+          </div>
+        </div>
 
+        <div class="project-card">
+          <h3>City Limits</h3>
+          <div class="card-content">
+            <p>Educational traffic simulation game teaching urban planning principles</p>
+            <ul>
+              <li>Real-world traffic data integration for authentic city experiences</li>
+              <li>Interactive gameplay focused on urban planning education</li>
+              <li>Spring 2026 RCOS project</li>
+            </ul>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Game Development</span>
+            <span class="tag">Urban Planning</span>
+            <span class="tag">RCOS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
