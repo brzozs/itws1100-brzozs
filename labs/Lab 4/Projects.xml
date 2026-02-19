@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="rss.css"?>
+<rss version="2.0">
+<channel>
+	<title>Sebastian's ITWS Labs</title>
+	<description>RSS feed for lab assignments.</description>
+	<link>http://brzozsrpi.eastus.cloudapp.azure.com/iit/labs/</link>
+
+	<item>
+		<title>Lab 1 - Server Setup</title>
+		<description>Created and deployed a Microsoft Azure Web Server.</description>
+		<link>http://brzozsrpi.eastus.cloudapp.azure.com/iit/labs/Lab%201/</link>
+		
+	</item>
+
+	<item>
+		<title>Lab 2 - HTML Resume</title>
+		<description>Built a Portfolio Website using HTML and CSS.</description>
+		<link>http://brzozsrpi.eastus.cloudapp.azure.com/iit/labs/Lab%202/</link>
+		
+	</item>
+
+	<item>
+		<title>Lab 3 - Personal Portfolio Website</title>
+		<description>Further enhanced the personal site, making it a tree linked to multiple pages.</description>
+		<link>http://brzozsrpi.eastus.cloudapp.azure.com/iit/labs/Lab%203/</link>
+		
+	</item>
+
+	<item>
+		<title>Lab 4 - RSS and XML Syndication</title>
+		<description>Made a XML and RSS page to display Lab Projects.</description>
+		<link>http://brzozsrpi.eastus.cloudapp.azure.com/iit/labs/Lab%204/</link>
+		
+	</item>
+
+</channel>
+</rss>
