@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Lab 5: JavaScript, Intro ITWS</title>
+   <meta charset="UTF-8" />
+   <link href="http://www.rpi.edu/favicon.ico" type="image/ico" rel="icon" />
+   <link href="http://www.rpi.edu/favicon.ico" type="image/ico" rel="shortcut icon" />
+   <style type="text/css">
+      body {
+         font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #content {
+         margin: 0 auto;
+         padding: 3em 2em;
+         max-width: 800px;
+      }
+
+      h1 {
+         font-size: 1.5em;
+         margin: 0;
+      }
+
+      h2 {
+         font-size: 1.1em;
+         margin-top: 0;
+      }
+
+      h3 {
+         font-size: 1em;
+         margin-top: 0;
+      }
+
+      ol li {
+         margin-bottom: 1em;
+      }
+
+      ul li {
+         margin-bottom: 1em;
+      }
+
+      ul li li {
+         margin-bottom: 0;
+      }
+
+      .pre {
+         white-space: pre;
+         font-family: Courier New, Courier, mono;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="content">
+      <h1>Lab 5: JavaScript</h1>
+      <h2>Intro ITWS</h2>
+
+      <h3>Work on an HTML form to provide user feedback and validation</h3>
+
+      <ul>
+         <li>
+            Starting templates:
+            <ul>
+               <li>
+                  For Lab 5:
+                  <ul>
+                     <li><a target="_blank" href="lab5.js">lab5.js</a></li>
+                     <li><a target="_blank" href="lab5.css">lab5.css</a></li>
+                     <li><a target="_blank" href="lab5.html">lab5.html</a></li>
+                  </ul>
+               </li>
+               <li>In-class exercises:
+                  <ul>
+                     <li><a target="_blank" href="js-inclass.js">js-inclass.js</a></li>
+                     <li><a target="_blank" href="js-inclass.css">js-inclass.css</a></li>
+                     <li><a target="_blank" href="js-inclass.html">js-inclass.html</a></li>
+                  </ul>
+               </li>
+               <!-- <li>
+              Everything zipped up for your convenience:
+              <ul>
+                <li><a href="Lab5-JavaScript.zip">Lab5-JavaScript.zip</a></li>
+              </ul>
+            </li> -->
+            </ul>
+         </li>
+         <li>
+            JavaScript Resources:
+            <ul>
+               <li>
+                  <a target="_blank" rel="noopener noreferrer"
+                     href="http://www.w3schools.com/jsref/default.asp">JavaScript and HTML DOM Reference</a>
+               </li>
+            </ul>
+         </li>
+         <li>
+            Do the following:
+            <ul>
+               <li>Create a new branch on your personal website repo for lab 5</li>
+               <li>You will now have a working (development) branch of your iit repository on your local machine for
+                  working on lab 5</li>
+               <li>
+                  Create a place to hold for your lab 5 files
+               </li>
+               <li>
+                  Copy the files from the starting templates into your working (lab 5) branch of your iit repository on
+                  your local machine</li>
+               <li>
+                  You will need to add lab 5 to your projects page.
+               </li>
+               <hr />
+               <li>
+                  Add your name to the HTML page just under the &lt;h1&gt;
+               </li>
+               <li>
+                  Use the starting structure to validate the form code.
+                  <ul>
+                     <li>Allow no fields to be blank.</li>
+                     <li>I have provided validation for the first field.</li>
+                     <li>
+                        If the form is successfully submitted, show a success message (using an alert() box) to the user
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  Add an onclick attribute to the textarea calling a function (that you will write) which will clear its
+                  value when the mouse
+                  cursor is placed in it.
+                  <ul>
+                     <li>Remove only the text "Please enter your comments"</li>
+                     <li>Do not delete the user's comments</li>
+                     <li>If the user clicks out of the text area without entering anything, replace with "Please enter
+                        your comments"</li>
+                  </ul>
+               </li>
+               <li>
+                  Create a button below the Contact Information box that creates an alert() displaying the values of the
+                  first name and nickname in the following way:
+                  "<em>firstName lastName</em> is <em>nickname</em>" (e.g. the alert might say, "Samuel Clemens is Mark
+                  Twain")
+               </li>
+               <li>
+                  HTML &amp; CSS: <strong>Correct</strong> <a
+                     href="http://line25.com/articles/10-usability-crimes-you-really-shouldnt-commit">crimes 1 and 4</a>
+                  that have been (intentionally) committed in lab5.html form.
+                  <ul>
+                     <li>Simply correct crime #1 (HTML)</li>
+                     <li>For crime #4, set the background color of focused fields to "#fee" (CSS)</li>
+                  </ul>
+               </li>
+               <li>Extra: on first load of the page, focus the first form element. (No points will be deducted for not
+                  doing this.)</li>
+            </ul>
+         </li>
+         <li>
+            Guidelines:
+            <ul>
+               <li>The HTML and CSS must validate.</li>
+               <li>Link to this lab from the projects page of your iit website.</li>
+               <li>Don&apos;t forget to incude a README file</li>
+               <li>
+                  Post a working link to your personal homepage in your README file and in the submission comments on
+                  LMS.
+               </li>
+               <li>
+                  When complete, commit your changes to your working (lab 5) branch of your iit repository on your local
+                  machine
+               </li>
+               <li>
+                  Push your changes to your iit repository on github.com
+               </li>
+               <li>
+                  Create a pull request to merge your working (lab 5) branch into your master branch
+               </li>
+               <li>
+                  Complete the merge on github.com to merge your changes back into main.
+               </li>
+               <li>
+                  Deploy your changes to your personal website.
+               </li>
+
+               <li><strong>Rubric:</strong> You will be graded on
+                  <ul>
+                     <li>Validity (10 pts),</li>
+                     <li>Code Formatting (15 pts),</li>
+                     <li>Completeness (35 pts)</li>
+                     <li>Environments/Workflow (40 pts)
+                        <ul>
+                           <li>Development (checkout/branch)</li>
+                           <li>Staging (push back to github)</li>
+                           <li>Production (PR to main)</li>
+                           <li>Deployment</li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+
+
+
+
+               <li>
+                  Javascript should be indented as shown;
+                  <ul>
+                     <li>2 or 3 spaces (consistent and not tabs) for indents.</li>
+                     <li>Always use curly braces on control statements (if, else, etc) as discussed in class.</li>
+                     <li>Use only one blank line between lines when you choose to use them.</li>
+                     <li>Layout should look like
+                        <!-- prettier-ignore -->
+                        <span class="pre">
+                           if (expr) {
+                           &nbsp;&nbsp;&nbsp;statement;
+                           } else {
+                           &nbsp;&nbsp;&nbsp;statement;
+                           }
+                        </span>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  Your website must be secured as required by Lab 1: if it is not
+                  yet secure by the time Lab 5 is graded, you will be deducted 20 points.
+               </li>
+               <li><strong>This lab is due by midnight on date shown in LMS</strong></li>
+            </ul>
+         </li>
+      </ul>
+
+
+   </div>
+</body>
+
+</html>

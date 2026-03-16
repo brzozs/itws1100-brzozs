@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lab 5: JavaScript - Intro ITWS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="lab5.css" type="text/css" />
+    <script type="text/javascript" src="lab5.js"></script>
+  </head>
+  <body>
+    <div id="bodyBlock">
+      <h1>Lab 5: JavaScript</h1>
+      <h2>Sebastian Brzozowski</h2>
+
+      <form id="contactForm" action="#" method="post" onsubmit="return validateForm();">
+        <fieldset>
+          <legend>Contact Information</legend>
+
+          <div>
+            <label class="field" for="firstName">First Name:</label>
+            <div class="value"><input id="firstName" name="firstName" type="text" /></div>
+          </div>
+
+          <div>
+            <label class="field" for="lastName">Last Name:</label>
+            <div class="value"><input id="lastName" name="lastName" type="text" /></div>
+          </div>
+
+          <div>
+            <label class="field" for="email">Email:</label>
+            <div class="value"><input id="email" name="email" type="text" /></div>
+          </div>
+
+          <div>
+            <label class="field" for="phone">Phone:</label>
+            <div class="value"><input id="phone" name="phone" type="text" /></div>
+          </div>
+
+          <div>
+            <label class="field" for="nickname">Nickname:</label>
+            <div class="value"><input id="nickname" name="nickname" type="text" /></div>
+          </div>
+
+          <div class="value buttonRow">
+            <input type="button" value="Show Nickname" onclick="showNickname();" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Comments</legend>
+          <div>
+            <label class="field" for="comments">Comments:</label>
+            <div class="value">
+              <textarea
+                id="comments"
+                name="comments"
+                rows="6"
+                cols="40"
+                onclick="clearComments(this);"
+                onblur="restoreComments(this);"
+              >Please enter your comments</textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <p>
+          <input id="save" type="submit" value="Save Form" />
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
