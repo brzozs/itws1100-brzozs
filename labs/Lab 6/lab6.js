@@ -22,6 +22,13 @@ $(document).ready(function () {
    //change the text size to 200% of normal
    // (note that there is already a class defined for the area where your name should go)
 
+   $('h1').click(function() {
+      $('.myName').text('Sebastian Brzozowski');
+      $('.myName').css('font-variant', 'small-caps');
+      $('.myName').css('color', 'purple');
+      $('.myName').css('font-size', '200%');
+   });
+
 
 
 
@@ -29,24 +36,50 @@ $(document).ready(function () {
    //   vanish over a 2 sec duration when a user clicks "Hide text";
    //   make it appear with a 3.3 second duration when a user clicks "Show text":
 
+   $('#hideText').click(function(e) {
+      e.preventDefault();
+      $('#showHideBlock p').fadeOut(2000);
+   });
+
+   $('#showText').click(function(e) {
+      e.preventDefault();
+      $('#showHideBlock p').fadeIn(3300);
+   });
+
 
    // Problem 3 (10 pts): When a normal list item is clicked, make it turn red using addClass.
    //            When a red list item is clicked change it back (you need to look up the appropriate jQuery method to do this)
    // (Note that there already is a css style named ".red" in lab6.css)
 
+   $('#labList').on('click', 'li', function() {
+      $(this).toggleClass('red');
+   });
+
 
    // Problem 4 (10 pts): When a user clicks on the "Add a list item" button, add a new list item to the end of the list.
+
+   $('#AddListItem').click(function() {
+      $('#labList').append('<li>New item</li>');
+   });
 
    // Problem 5 (10 pts) - what happens when you click on the new li?  Why? (Explain in your readme file)
    //   ie if it works as after #3 above, why? if it doesn't, why not?  How would you fix it?
    //   If it doesm't work - fix it.
    //   (Note that you need to look up the appropriate jQuery method - discussed in class - to do this)
+   
+   // The fix: We used .on() for event delegation in Problem 3
+   // .on() listens on the parent and works for both existing and future elements
 
 
 
 
    // Problem 5 (10 pts): lookup another jquery method and use this code on the "Toggle Text"
    // link to show/hide the text:
+
+   $('#toggleText').click(function(e) {
+      e.preventDefault();
+      $('#showHideBlock p').toggle();
+   });
 
    // Problems: 50 pts
    // Validity: 10 pts

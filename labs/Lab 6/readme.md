@@ -45,3 +45,8 @@ a. make sure to include links to your homepage, your lab page, and your github r
 2. Deploy to your server.
 3. Test again
 4. Submit your zip of your repo to LMS - make sure it includes the correct links
+
+
+Problem 5 Answer:
+
+New list items WILL toggle red because we used `.on()` for event delegation instead of `.click()`. The `.on()` method listens to the parent container and works for both existing and future elements. Without this fix, new items wouldn't respond to clicks because they were added after the initial handler was attached.
