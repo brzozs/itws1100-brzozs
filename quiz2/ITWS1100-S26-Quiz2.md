@@ -127,6 +127,10 @@ iv.
 
 **c. (5 points, ~4 min)** Your classmate says their JavaScript code runs but "nothing happens on the page." The console shows no errors. Walk through your debugging process: what Developer Tools features would you use, what would you check first, second, third? Describe at least three specific debugging steps and what each one tells you. Reference a specific debugging experience from your own labs.
 
+**Answer:**
+
+When JavaScript runs but nothing happens and the console is clean, the problem is almost always a targeting or timing issue. My first step is to open the **Elements panel** in Developer Tools and confirm the selector actually matches something in the DOM — if the id or class name is off even slightly, the code runs against zero elements and nothing happens. Second, I add a `console.log()` inside the handler to verify it is even firing. I ran into exactly this in Lab 6 Problem 5: clicking newly added list items did nothing, no error anywhere. Logging inside the click handler showed it never fired, which revealed that `$('li').click()` only binds to elements that existed at page load — dynamically added items were ignored. Switching to `$('#labList').on('click', 'li', function() {...})` fixed it by delegating the event to the parent. Third, if the handler does fire but the change still does not appear, I use the **Sources panel** to set a breakpoint and inspect variable values at that moment, which catches silent false conditions or null references that stop execution without throwing an error.
+
 ---
 
 ## 3. HCI & Case Studies (20 points, ~15 minutes)

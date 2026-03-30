@@ -1,4 +1,14 @@
-/* Quiz 2 CSS File */
+/* i */
+.makeItPurple {
+  color: purple;
+  font-style: italic;
+  font-variant: small-caps;
+}
+
+/* j */
+h1, h4 {
+  text-align: center;
+}
 
 body {
   width: 1000px;
