@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Projects - Sebastian Brzozowski</title>
+
+   <!-- jQuery served from CDN -->
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <!-- jQuery UI served from CDN -->
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+   <link rel="stylesheet" href="lab8.css" />
+   <script src="lab8.js"></script>
+</head>
+<body>
+
+   <h1>Sebastian Brzozowski - Projects</h1>
+   <a href="../Lab 3/index.html">&#8592; Back to Home</a>
+
+   <!-- Filter buttons to show by category -->
+   <div id="filterButtons">
+      <button class="filterBtn active" data-filter="All">All</button>
+      <button class="filterBtn" data-filter="Lab">Labs</button>
+      <button class="filterBtn" data-filter="Project">Projects</button>
+   </div>
+
+   <!-- Projects are loaded here dynamically via AJAX -->
+   <div id="projectsContainer">
+      <p id="loadingMsg">Loading projects...</p>
+   </div>
+
+</body>
+</html>

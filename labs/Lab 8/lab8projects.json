@@ -1,0 +1,46 @@
+{
+   "menuItem": [
+      {
+         "title": "Lab 2 - Resume",
+         "description": "HTML resume built with CSS flexbox and grid layout.",
+         "link": "../Lab 2/brzozos-SebastianBrzozowski-Resume.html",
+         "category": "Lab"
+      },
+      {
+         "title": "Lab 3 - Personal Website",
+         "description": "Multi-page personal website with navigation, education, experience, and project pages.",
+         "link": "../Lab 3/index.html",
+         "category": "Lab"
+      },
+      {
+         "title": "Lab 5 - JavaScript",
+         "description": "JavaScript and jQuery exercises including DOM manipulation and event handling.",
+         "link": "../Lab 5/Lab 5/lab5.html",
+         "category": "Lab"
+      },
+      {
+         "title": "Lab 6 - jQuery",
+         "description": "jQuery lab covering event handlers, fade effects, toggleClass, and list manipulation.",
+         "link": "../Lab 6/lab6.html",
+         "category": "Lab"
+      },
+      {
+         "title": "Lab 8 - Dynamic Projects Page",
+         "description": "This page - dynamically generated from a JSON file using jQuery AJAX.",
+         "link": "lab8.html",
+         "category": "Lab"
+      },
+      {
+         "title": "RPI Dorms Space",
+         "description": "Interactive 3D web application for exploring RPI dorm rooms.",
+         "link": "#",
+         "category": "Project"
+      },
+      {
+         "title": "City Limits",
+         "description": "Educational traffic simulation game teaching urban planning principles. Spring 2026 RCOS project.",
+         "link": "#",
+         "category": "Project"
+      }
+   ]
+}
