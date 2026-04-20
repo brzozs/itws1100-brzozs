@@ -1,4 +1,3 @@
--- create the tables for our movies
 CREATE TABLE `movies` (
    `movieid` int(10) unsigned NOT NULL AUTO_INCREMENT,
    `title` varchar(100) NOT NULL,
@@ -6,7 +5,6 @@ CREATE TABLE `movies` (
    PRIMARY KEY (`movieid`)
 );
 
--- create the actors table
 CREATE TABLE `actors` (
    `actorid` int(10) unsigned NOT NULL AUTO_INCREMENT,
    `last_name` varchar(40) NOT NULL,
@@ -15,14 +13,12 @@ CREATE TABLE `actors` (
    PRIMARY KEY (`actorid`)
 );
 
--- relationship table between movies and actors
 CREATE TABLE `movie_actors` (
    `movieid` int(10) unsigned NOT NULL,
    `actorid` int(10) unsigned NOT NULL,
    PRIMARY KEY (`movieid`, `actorid`)
 );
 
--- insert data into movies
 INSERT INTO movies
 VALUES (1, "Elizabeth", "1998"),
    (2, "Black Widow", "2021"),
@@ -34,7 +30,6 @@ VALUES (1, "Elizabeth", "1998"),
    ),
    (5, "Up in the Air", "2009");
 
--- insert sample actors
 INSERT INTO actors (`actorid`, `last_name`, `first_names`, `dob`)
 VALUES (1, "Blanchett", "Cate", "1969-05-14"),
    (2, "Johansson", "Scarlett", "1984-11-22"),
@@ -46,7 +41,6 @@ VALUES (1, "Blanchett", "Cate", "1969-05-14"),
    (8, "McDormand", "Frances", "1957-06-23"),
    (9, "Downey Jr", "Robert", "1965-04-04");
 
--- relate actors to movies
 INSERT INTO movie_actors (`movieid`, `actorid`)
 VALUES (1, 1),
    (2, 2),

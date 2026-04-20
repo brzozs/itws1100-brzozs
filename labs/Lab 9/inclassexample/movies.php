@@ -1,6 +1,6 @@
 <?php 
-  include('includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('includes/functions.inc.php'); // functions
+  include('includes/init.inc.php');
+  include('includes/functions.inc.php');
 ?>
 <title>PHP &amp; MySQL - ITWS</title>   
 
@@ -11,7 +11,6 @@
 <?php include('includes/menubody.inc.php'); ?>
 
 <?php
-// Open one database connection for this page.
 $dbOk = false;
 @$db = new mysqli('localhost', 'root', 'root', 'iit');
 
@@ -62,5 +61,4 @@ if ($dbOk) {
 </table>
 
 <?php include('includes/foot.inc.php'); 
-  // footer info and closing tags
 ?>
