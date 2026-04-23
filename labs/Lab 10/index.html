@@ -20,8 +20,10 @@
   <li>A server root redirect in <code>lab10/index.php</code> so the domain can forward visitors into the site</li>
   <li>A <code>lab10/README.md</code> file with my FQDN and repository information</li>
   <li>A webhook template in <code>lab10/deploy.php.example</code> for GitHub auto-deploy</li>
+  <li>A canonical <code>labs/open.php</code> router so every lab now has a stable entry URL</li>
   <li>Updated project data in Lab 8 so secured labs are marked with lock icons</li>
   <li>Per-folder <code>.htaccess</code> protection for Labs 1 and 9 instead of protecting the whole site</li>
+  <li>Deployment helper scripts to enable HTTPS and verify the site after pulling on Azure</li>
 </ul>
 
 <h2>Security Changes</h2>
@@ -30,6 +32,7 @@
   <li>Lab 9 is marked as secure in the projects JSON</li>
   <li>The root <code>.htaccess</code> was removed so the entire site is no longer locked</li>
   <li>Lab-specific <code>.htaccess</code> files are used where authentication is required</li>
+  <li>A dedicated HTTPS setup script can be run on the Azure VM to enable SSL and redirect HTTP traffic</li>
 </ul>
 
 <h2>Files</h2>
@@ -37,6 +40,8 @@
   <li><a href="../../lab10/README.md">Lab 10 README</a></li>
   <li><a href="../../lab10/index.php">Redirect PHP file</a></li>
   <li><a href="../../lab10/deploy.php.example">Auto-deploy webhook template</a></li>
+  <li><a href="../../lab10/setup_https.sh">HTTPS setup script</a></li>
+  <li><a href="../../lab10/check_site.sh">Site verification script</a></li>
   <li><a href="../Lab 8/lab8.html">Projects page</a></li>
 </ul>
 
