@@ -1,31 +1,32 @@
 # Quiz 3 Guestbook
 
-## Feature Summary
-This folder contains **Option A: Guestbook / Comment Wall** for Quiz 3. Visitors can enter a name and a comment, the data is stored in MySQL with PHP, and the newest messages appear first on the page.
+## Overview
+For Quiz 3, I built Option A, a guestbook/comment wall. A visitor can type in a name and a comment, submit it, and the message gets stored in MySQL and displayed on the page with the newest posts first.
 
-## Local Run
+## Local setup
 1. Import the schema:
 
-   ```bash
-   mysql -uroot < quiz3/schema.sql
-   ```
+```bash
+mysql -uroot < quiz3/schema.sql
+```
 
-2. Start a local PHP server from the repo root:
+2. Start the PHP server from the repo root:
 
-   ```bash
-   php -S 127.0.0.1:8000
-   ```
+```bash
+php -S 127.0.0.1:8000
+```
 
-3. Open:
+3. Open this page in the browser:
 
-   [http://127.0.0.1:8000/quiz3/index.php](http://127.0.0.1:8000/quiz3/index.php)
+http://127.0.0.1:8000/quiz3/index.php
 
-## Deployment URL
-Local-only for now, per request. The planned Azure path after deployment is:
+## Azure URL
+This is the URL I will use after deployment:
 
-- [https://brzozsrpi.eastus.cloudapp.azure.com/iit/quiz3/](https://brzozsrpi.eastus.cloudapp.azure.com/iit/quiz3/)
+https://brzozsrpi.eastus.cloudapp.azure.com/iit/quiz3/
 
-## CREATE TABLE Statement
+## CREATE TABLE statement
+
 ```sql
 CREATE TABLE IF NOT EXISTS guestbook_entries (
   entry_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -36,23 +37,29 @@ CREATE TABLE IF NOT EXISTS guestbook_entries (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-## Code Walkthrough
+## Code walkthrough
 
-### Database Schema
-The schema uses one table, `guestbook_entries`. `entry_id` is the primary key and auto-increments so each message has a unique identifier. `visitor_name` uses `VARCHAR(80)` because names are short and need a clear upper bound. `comment_text` uses `TEXT` because comments can be longer than a normal name field. `created_at` stores when the message was posted and defaults to the current timestamp so the server records the post time automatically.
+### Database schema
+I used one table called guestbook_entries. The entry_id column is the primary key and auto-increments so every post has its own ID. visitor_name is a VARCHAR(80) because names are short and I wanted a clear limit. comment_text is TEXT because comments can be longer. created_at stores the time the message was posted, which lets me sort the messages with the newest ones first.
 
-### PHP Write Path
-The form in [index.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/index.php) posts to [submit.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/submit.php). `submit.php` first checks that the request method is `POST`, then calls `guestbook_normalize_input($_POST)` to trim the raw form values. After that, `guestbook_validate_entry($entry)` checks that both required fields are present and within the length limits. If validation succeeds, `guestbook_db_connect()` opens the MySQL connection. `guestbook_insert_entry()` runs an `INSERT INTO guestbook_entries (visitor_name, comment_text) VALUES (?, ?)` prepared statement, then `guestbook_fetch_entry_by_id()` loads the just-created row back from MySQL so the endpoint can return the real saved record. For AJAX requests, `submit.php` sends JSON back to the browser with a success message and the rendered HTML snippet for the new entry.
+### PHP write path
+The form on index.php sends data to submit.php. In submit.php, the first step is checking that the request method is POST. After that, the code trims the values from the form and validates them. If either field is blank, the script sends an error back instead of saving bad data.
 
-### PHP Read Path
-When the browser loads [index.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/index.php), the page includes [db.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/includes/db.php) and [guestbook.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/includes/guestbook.php). The page connects to MySQL and runs `guestbook_fetch_entries()`, which selects every row ordered by `created_at DESC, entry_id DESC` so the newest posts show first. The resulting array is passed into `guestbook_render_entries($entries)`. That helper loops through each entry with `array_map('guestbook_render_entry', $entries)` and builds the HTML cards shown in the browser. Inside `guestbook_render_entry()`, `htmlspecialchars()` escapes the name, comment, and timestamp before they are printed, which prevents browser-side script injection.
+If the data is valid, PHP connects to MySQL and runs an INSERT statement with placeholders. That is the prepared statement part. The values are bound separately, so user input is treated like data instead of part of the SQL command. After the insert, the code loads that same row back from the database and sends it to the browser as JSON.
 
-### Client-Side JavaScript
-[app.js](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/assets/app.js) improves the user experience in three ways. First, it shows a live comment counter so the visitor can see how close they are to the 500-character limit. Second, it intercepts the form submit event and sends the data with `fetch()` instead of forcing a full page reload. Third, it updates the DOM after the server responds: validation errors appear under the right fields, success messages appear at the top of the form, and the returned entry HTML is inserted at the top of the message wall immediately.
+### PHP read path
+When index.php loads, it connects to the database and gets all guestbook entries from the guestbook_entries table. The query orders the rows by created_at DESC and then entry_id DESC, so the newest message shows up first. The results are turned into an array of rows.
 
-## Files
-- [index.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/index.php)
-- [submit.php](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/submit.php)
-- [schema.sql](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/schema.sql)
-- [prompt-log.md](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/prompt-log.md)
-- [break-it.md](/Users/sebastian/Library/Mobile Documents/com~apple~CloudDocs/School/ITWS/itws1100-brzozs/quiz3/break-it.md)
+Then the render helper builds the HTML for each message. The helper escapes the name, comment, and date before putting them on the page. That matters because if I printed raw user input, someone could try to inject HTML or JavaScript into the page.
+
+### Client-side JavaScript
+The JavaScript file does a few things to make the page better to use. It watches the comment box and updates the live character count while the user types. It also intercepts the form submission and sends the data with fetch instead of doing a full page reload.
+
+When the response comes back, the script checks whether it succeeded. If there is a validation problem, it shows the error message under the matching field. If the post works, it adds the new guestbook message to the top of the page right away, resets the form, and shows a success message.
+
+## Main files
+- index.php
+- submit.php
+- schema.sql
+- prompt-log.md
+- break-it.md

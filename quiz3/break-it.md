@@ -1,11 +1,11 @@
-# Break It Exercise
+# Break It
 
-This document shows two vulnerabilities in a **copy** of the guestbook code. The live feature should keep the original safe version.
+For this part, I made vulnerable copies of the code instead of changing the real version of the guestbook.
 
-## Vulnerability 1: SQL Injection
+## 1. SQL Injection
 
-### Vulnerable Code
-This is a copied, intentionally unsafe version of the prepared statement in `guestbook_fetch_entry_by_id()`:
+### Vulnerable code
+In the safe version, I use a prepared statement. In the vulnerable copy, I changed it to direct string concatenation:
 
 ```php
 $query = "
@@ -20,24 +20,24 @@ WHERE entry_id = " . $_GET['entry_id'];
 $result = $db->query($query);
 ```
 
-### Malicious Input
-If an attacker can control `entry_id`, they could send:
+### Malicious input
+If somebody could control `entry_id`, they could use this:
 
 ```text
 0 OR 1=1
 ```
 
-### What Would Happen
-The query would become:
+### What would happen
+The SQL would turn into this:
 
 ```sql
-... WHERE entry_id = 0 OR 1=1
+WHERE entry_id = 0 OR 1=1
 ```
 
-Because `1=1` is always true, the database would return every row instead of just one intended row. That leaks data and proves the attacker changed the meaning of the SQL statement.
+Since `1=1` is always true, the query would return every row instead of one row. That means the attacker changed what the SQL does just by typing input into the page.
 
-### Safe Code
-This is the original safe pattern from the real project:
+### Safe code
+This is the original safe version:
 
 ```php
 $statement = $db->prepare(
@@ -49,13 +49,13 @@ $statement->bind_param('i', $entryId);
 $statement->execute();
 ```
 
-### Why the Safe Code Works
-The `?` placeholder keeps the SQL structure fixed, and `bind_param('i', $entryId)` sends the value separately as an integer. MySQL treats it as data, not as part of the SQL command, so `0 OR 1=1` cannot change the query logic.
+### Why the safe code works
+The `?` keeps the SQL command fixed, and `bind_param('i', $entryId)` sends the value separately as data. Because of that, MySQL does not treat the input like part of the SQL command.
 
-## Vulnerability 2: XSS (Cross-Site Scripting)
+## 2. XSS
 
-### Vulnerable Code
-This is a copied, intentionally unsafe version of `guestbook_render_entry()` with escaping removed:
+### Vulnerable code
+In the safe version, I escape output before showing it. In the vulnerable copy, I removed that escaping:
 
 ```php
 function guestbook_render_entry(array $entry): string
@@ -76,18 +76,18 @@ HTML;
 }
 ```
 
-### Malicious Input
-An attacker could submit this as the name or comment:
+### Malicious input
+Someone could type this into the form:
 
 ```html
 <script>alert('hacked')</script>
 ```
 
-### What Would Happen
-When another visitor loads the guestbook page, the browser would treat the `<script>` tag as real code and run it. In this example, it would show an alert box, but a real attacker could inject worse JavaScript to steal data or manipulate the page.
+### What would happen
+If that input gets stored and shown without escaping, the browser reads it like real JavaScript instead of plain text. In this example it would pop up an alert, but in a real attack it could be used to run unwanted code in another user's browser.
 
-### Safe Code
-This is the original safe pattern from the real project:
+### Safe code
+This is the original safe version:
 
 ```php
 $name = htmlspecialchars((string) ($entry['visitor_name'] ?? 'Anonymous'), ENT_QUOTES, 'UTF-8');
@@ -95,5 +95,5 @@ $comment = nl2br(htmlspecialchars((string) ($entry['comment_text'] ?? ''), ENT_Q
 $createdAt = htmlspecialchars((string) ($entry['created_at'] ?? ''), ENT_QUOTES, 'UTF-8');
 ```
 
-### Why the Safe Code Works
-`htmlspecialchars()` converts characters like `<`, `>`, and quotes into harmless HTML entities. That means the browser displays the attacker’s input as plain text instead of executing it as JavaScript.
+### Why the safe code works
+`htmlspecialchars()` changes characters like `<`, `>`, and quotes into HTML entities. That makes the browser display the input as text instead of running it as code.
