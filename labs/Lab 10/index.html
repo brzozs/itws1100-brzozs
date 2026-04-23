@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 10 - Deployment and Security</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<h1>Lab 10: Deployment and Security</h1>
+<h4>Publishing the site, securing selected labs, and preparing auto-deploy</h4>
+<hr>
+
+<h2>Overview</h2>
+<p>For Lab 10, I prepared my ITWS site for production deployment on Azure. The work focused on moving from a development setup to a live site with a cleaner homepage flow, selective password protection, HTTPS support, and webhook-based deployment.</p>
+
+<h2>What I Added</h2>
+<ul>
+  <li>A server root redirect in <code>lab10/index.php</code> so the domain can forward visitors into the site</li>
+  <li>A <code>lab10/README.md</code> file with my FQDN and repository information</li>
+  <li>A webhook template in <code>lab10/deploy.php.example</code> for GitHub auto-deploy</li>
+  <li>Updated project data in Lab 8 so secured labs are marked with lock icons</li>
+  <li>Per-folder <code>.htaccess</code> protection for Labs 1 and 9 instead of protecting the whole site</li>
+</ul>
+
+<h2>Security Changes</h2>
+<ul>
+  <li>Lab 1 is marked as secure in the projects JSON</li>
+  <li>Lab 9 is marked as secure in the projects JSON</li>
+  <li>The root <code>.htaccess</code> was removed so the entire site is no longer locked</li>
+  <li>Lab-specific <code>.htaccess</code> files are used where authentication is required</li>
+</ul>
+
+<h2>Files</h2>
+<ul>
+  <li><a href="../../lab10/README.md">Lab 10 README</a></li>
+  <li><a href="../../lab10/index.php">Redirect PHP file</a></li>
+  <li><a href="../../lab10/deploy.php.example">Auto-deploy webhook template</a></li>
+  <li><a href="../Lab 8/lab8.html">Projects page</a></li>
+</ul>
+
+<h2>Navigation</h2>
+<a href="../Lab 8/lab8.html"><h3>Back to Projects</h3></a>
+<a href="../../index.html"><h3>Home</h3></a>
+
+</body>
+</html>

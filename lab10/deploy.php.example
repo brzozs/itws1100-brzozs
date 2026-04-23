@@ -1,0 +1,48 @@
+<?php
+// Copy this file to /var/www/html/deploy.php on your server and set your real secret.
+$secret = 'REPLACE_WITH_WEBHOOK_SECRET';
+$repoPath = '/var/www/html/iit';
+$logFile = '/var/log/deploy.log';
+
+function write_log($logFile, $message)
+{
+    file_put_contents($logFile, date('Y-m-d H:i:s') . ' ' . $message . PHP_EOL, FILE_APPEND);
+}
+
+$signature = $_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '';
+$payload = file_get_contents('php://input');
+$expected = 'sha256=' . hash_hmac('sha256', $payload, $secret);
+
+if (!hash_equals($expected, $signature)) {
+    http_response_code(403);
+    write_log($logFile, 'REJECTED: invalid signature');
+    echo 'Invalid signature';
+    exit;
+}
+
+$data = json_decode($payload, true);
+$branch = $data['ref'] ?? '';
+
+if ($branch !== 'refs/heads/main') {
+    http_response_code(200);
+    write_log($logFile, 'SKIPPED: push to ' . $branch);
+    echo 'Not main branch';
+    exit;
+}
+
+$output = [];
+$exitCode = 0;
+$command = 'cd ' . escapeshellarg($repoPath) . ' && sudo -u www-data git pull origin main 2>&1';
+exec($command, $output, $exitCode);
+
+$result = implode("\n", $output);
+if ($exitCode === 0) {
+    write_log($logFile, 'SUCCESS: ' . $result);
+    http_response_code(200);
+    echo 'SUCCESS';
+    exit;
+}
+
+write_log($logFile, 'FAILED: ' . $result);
+http_response_code(500);
+echo 'FAILED';

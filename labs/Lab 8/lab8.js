@@ -16,10 +16,18 @@ $(document).ready(function () {
 
          // Build a card for each project item in the JSON
          $.each(data.menuItem, function (i, item) {
+            var isSecure = item.secure === true;
+            var lockIcon = isSecure
+               ? ' <span class="lockIcon" aria-hidden="true">&#128274;</span><span class="srOnly"> (Password required)</span>'
+               : '';
+            var tooltipText = isSecure
+               ? item.description + ' (Password required)'
+               : item.description;
+
             var card = '<div class="projectCard" data-category="' + item.category + '">';
             card += '<span class="category">' + item.category + '</span>';
             // Store the description in a title attribute so jQuery UI tooltip can pick it up
-            card += '<h2><a href="' + item.link + '" title="' + item.description + '">' + item.title + '</a></h2>';
+            card += '<h2><a href="' + item.link + '" title="' + tooltipText + '">' + item.title + lockIcon + '</a></h2>';
             card += '<p>' + item.description + '</p>';
             card += '</div>';
             $('#projectsContainer').append(card);

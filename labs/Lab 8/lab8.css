@@ -66,6 +66,22 @@ a:hover {
    color: #2c3e50;
 }
 
+.lockIcon {
+   margin-left: 4px;
+   font-size: 0.9em;
+}
+
+.srOnly {
+   border: 0;
+   clip: rect(0 0 0 0);
+   height: 1px;
+   margin: -1px;
+   overflow: hidden;
+   padding: 0;
+   position: absolute;
+   width: 1px;
+}
+
 .projectCard p {
    font-size: 14px;
    color: #555;

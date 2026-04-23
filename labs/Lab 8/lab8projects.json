@@ -1,46 +1,81 @@
 {
    "menuItem": [
       {
+         "title": "Lab 1 - Azure and GitHub Setup",
+         "description": "Azure VM setup, GitHub repo setup, and initial deployment deliverables.",
+         "link": "../Lab 1/Hello-World(brzozs).pdf",
+         "category": "Lab",
+         "secure": true
+      },
+      {
          "title": "Lab 2 - Resume",
          "description": "HTML resume built with CSS flexbox and grid layout.",
          "link": "../Lab 2/brzozos-SebastianBrzozowski-Resume.html",
-         "category": "Lab"
+         "category": "Lab",
+         "secure": false
       },
       {
          "title": "Lab 3 - Personal Website",
          "description": "Multi-page personal website with navigation, education, experience, and project pages.",
          "link": "../Lab 3/index.html",
-         "category": "Lab"
+         "category": "Lab",
+         "secure": false
+      },
+      {
+         "title": "Lab 4 - RSS and XML Syndication",
+         "description": "XML and RSS project feed built from the course project listings.",
+         "link": "../Lab 5/Lab 5/lab4/Projects.xml",
+         "category": "Lab",
+         "secure": false
       },
       {
          "title": "Lab 5 - JavaScript",
          "description": "JavaScript and jQuery exercises including DOM manipulation and event handling.",
          "link": "../Lab 5/Lab 5/lab5.html",
-         "category": "Lab"
+         "category": "Lab",
+         "secure": false
       },
       {
          "title": "Lab 6 - jQuery",
          "description": "jQuery lab covering event handlers, fade effects, toggleClass, and list manipulation.",
          "link": "../Lab 6/lab6.html",
-         "category": "Lab"
+         "category": "Lab",
+         "secure": false
       },
       {
          "title": "Lab 8 - Dynamic Projects Page",
          "description": "This page - dynamically generated from a JSON file using jQuery AJAX.",
          "link": "lab8.html",
-         "category": "Lab"
+         "category": "Lab",
+         "secure": false
+      },
+      {
+         "title": "Lab 9 - PHP and MySQL",
+         "description": "PHP and MySQL lab using a movie database and SQL queries.",
+         "link": "../Lab 9/site/index.php",
+         "category": "Lab",
+         "secure": true
+      },
+      {
+         "title": "Lab 10 - Deployment and Security",
+         "description": "Production deployment, selective access control, SSL, and GitHub auto-deploy workflow.",
+         "link": "../Lab 10/index.html",
+         "category": "Lab",
+         "secure": false
       },
       {
          "title": "RPI Dorms Space",
          "description": "Interactive 3D web application for exploring RPI dorm rooms.",
-         "link": "#",
-         "category": "Project"
+         "link": "https://github.com/brzozs/RPI-Dorms-Space",
+         "category": "Project",
+         "secure": false
       },
       {
          "title": "City Limits",
          "description": "Educational traffic simulation game teaching urban planning principles. Spring 2026 RCOS project.",
-         "link": "#",
-         "category": "Project"
+         "link": "https://github.com/brzozs/City-Limits",
+         "category": "Project",
+         "secure": false
       }
    ]
 }
