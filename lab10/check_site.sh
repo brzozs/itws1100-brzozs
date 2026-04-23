@@ -10,10 +10,18 @@ check_status() {
   local label="$1"
   local expected="$2"
   local url="$3"
-  local extra_args=("${@:4}")
+  local extra_args=()
   local actual
 
-  actual="$(curl -sS -o /dev/null -w '%{http_code}' "${extra_args[@]}" "$url" || true)"
+  if [[ "$#" -gt 3 ]]; then
+    extra_args=("${@:4}")
+  fi
+
+  if [[ "${#extra_args[@]}" -gt 0 ]]; then
+    actual="$(curl -sS -o /dev/null -w '%{http_code}' "${extra_args[@]}" "$url" || true)"
+  else
+    actual="$(curl -sS -o /dev/null -w '%{http_code}' "$url" || true)"
+  fi
 
   if [[ "$actual" == "$expected" ]]; then
     echo "[PASS] $label -> $actual"
