@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS itws_quiz3
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE itws_quiz3;
+
+CREATE TABLE IF NOT EXISTS guestbook_entries (
+  entry_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  visitor_name VARCHAR(80) NOT NULL,
+  comment_text TEXT NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (entry_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
